@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package telas;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -44,14 +40,12 @@ public class TelaAgenda extends javax.swing.JFrame {
     Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 
     public TelaAgenda() {
-        //  setExtendedState( MAXIMIZED_BOTH );
         initComponents();
         this.modelContato = new tableModelContato();
         this.jTableContato.setModel(modelContato);
         preparaTabela();
         pesquisaPreencheTabela("SELECT * FROM CONTATO ORDER BY NOME");
         this.setIconImage(imagemTitulo);
-        //modelContato.setDados(daoContato.preencheTabela("SELECT * FROM CONTATO ORDER BY NOME"));
     }
 
     @SuppressWarnings("unchecked")
@@ -112,9 +106,9 @@ public class TelaAgenda extends javax.swing.JFrame {
         setTitle("Agenda de Contatos V.1.5 NathanRaposo");
         setResizable(false);
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(0));
 
-        jpComponentes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jpComponentes.setBorder(new javax.swing.border.SoftBevelBorder(0));
 
         jtTelResidencial.setEnabled(false);
 
@@ -133,20 +127,10 @@ public class TelaAgenda extends javax.swing.JFrame {
         jLabel4.setText("Telefone Celular:");
 
         jtEmpresa.setEnabled(false);
-        jtEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtEmpresaActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Empresa:");
 
         jtEmail.setEnabled(false);
-        jtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtEmailActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Email:");
 
@@ -202,14 +186,11 @@ public class TelaAgenda extends javax.swing.JFrame {
 
         jLabel9.setText("Código:");
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
         jtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtPesquisaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtPesquisaKeyReleased(evt);
             }
         });
 
@@ -266,7 +247,7 @@ public class TelaAgenda extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -327,11 +308,6 @@ public class TelaAgenda extends javax.swing.JFrame {
                 jtDataUltimaVisitaActionPerformed(evt);
             }
         });
-        jtDataUltimaVisita.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtDataUltimaVisitaKeyReleased(evt);
-            }
-        });
 
         jLabel16.setText("Data Ultima Visita:");
 
@@ -339,11 +315,6 @@ public class TelaAgenda extends javax.swing.JFrame {
 
         jrButon.setText("Hoje");
         jrButon.setEnabled(false);
-        jrButon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jrButonMouseClicked(evt);
-            }
-        });
         jrButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrButonActionPerformed(evt);
@@ -448,7 +419,7 @@ public class TelaAgenda extends javax.swing.JFrame {
                                 .addComponent(jrButon))
                             .addComponent(jLabel16))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 941, Short.MAX_VALUE)
         );
         jpComponentesLayout.setVerticalGroup(
             jpComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,7 +488,7 @@ public class TelaAgenda extends javax.swing.JFrame {
                                     .addComponent(jtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpComponentesLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16)
@@ -564,15 +535,76 @@ public class TelaAgenda extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtEmpresaActionPerformed
-
-    private void jtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtEmailActionPerformed
-
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
+        novoContato();
+    }//GEN-LAST:event_jbNovoActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        salvarContato();
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        cancelar();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
+        pesquisaPreencheTabela("SELECT * FROM CONTATO WHERE NOME LIKE '%" + jtPesquisa.getText() + "%'");
+    }//GEN-LAST:event_jbPesquisarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        alterarContato();
+    }//GEN-LAST:event_jbAlterarActionPerformed
+
+    private void jTableContatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContatoMouseClicked
+        setComponentes();
+        habilitaBotoes();
+    }//GEN-LAST:event_jTableContatoMouseClicked
+
+    private void jTableContatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableContatoKeyReleased
+        setComponentes();
+        habilitaBotoes();
+    }//GEN-LAST:event_jTableContatoKeyReleased
+
+    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir ?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION, 0);
+        if (opcao == JOptionPane.YES_OPTION) {
+            excluirContato();
+        }
+    }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void jtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jbPesquisar.doClick();
+        }
+    }//GEN-LAST:event_jtPesquisaKeyPressed
+
+    private void jtRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRelatorioActionPerformed
+//        Relatorios rel = new Relatorios();
+//        try {
+//            JasperViewer.viewReport(rel.gerarRelatorio(), false);
+//        } catch (Exception e) {
+//        }
+    }//GEN-LAST:event_jtRelatorioActionPerformed
+
+    private void jrButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrButonActionPerformed
+        if (jrButon.isSelected()) {
+            jtDataUltimaVisita.setDataDia(true);
+        } else if (!jrButon.isSelected()) {
+            jtDataUltimaVisita.limpar();
+        }
+    }//GEN-LAST:event_jrButonActionPerformed
+
+    private void jtDataUltimaVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataUltimaVisitaActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String data = sdf.format(new Date());
+        System.out.println("teste entrou");
+        if (jtDataUltimaVisita.getValor() == data) {
+            System.out.println("entrou dentro");
+            jrButon.setSelected(true);
+        }
+    }//GEN-LAST:event_jtDataUltimaVisitaActionPerformed
+
+    private void novoContato() {
         estadoTela = INCLUINDO;
         limparCampos(jpComponentes);
         jtCodigo.setText(daoContato.proximoContato());
@@ -584,13 +616,13 @@ public class TelaAgenda extends javax.swing.JFrame {
         jtNome.requestFocus();
         jTableContato.setEnabled(false);
         jtDataUltimaVisita.setDataDia(true);
-    }//GEN-LAST:event_jbNovoActionPerformed
+    }
 
-    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+    private boolean salvarContato() throws HeadlessException, NumberFormatException {
         if (jtNome.eVazio()) {
             JOptionPane.showMessageDialog(null, "Campo nome é obrigatorio!", "Atenção", 0);
             jtNome.requestFocus();
-            return;
+            return true;
         }
         if (estadoTela == INCLUINDO) {
             temDadosnaTela = false;
@@ -612,171 +644,31 @@ public class TelaAgenda extends javax.swing.JFrame {
             habilitarCampos(jpComponentes, false);
             jbCancelar.doClick();
         }
-    }//GEN-LAST:event_jbSalvarActionPerformed
+        return false;
+    }
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+    private void cancelar() {
         estadoTela = PADRAO;
         temDadosnaTela = false;
         limparCampos(jpComponentes);
         habilitaBotoes();
         habilitarCampos(jpComponentes, false);
-    }//GEN-LAST:event_jbCancelarActionPerformed
+    }
 
-    private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        pesquisaPreencheTabela("SELECT * FROM CONTATO WHERE NOME LIKE '%" + jtPesquisa.getText() + "%'");
-    }//GEN-LAST:event_jbPesquisarActionPerformed
-
-    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+    private void alterarContato() {
         estadoTela = ALTERANDO;
         jtNome.requestFocus();
         habilitaBotoes();
         habilitarCampos(jpComponentes, true);
-
-    }//GEN-LAST:event_jbAlterarActionPerformed
-
-    public void pesquisaPreencheTabela(String sql) {
-        if (daoContato.preencheTabela(sql).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Contato não Encontrado!");
-        } else {
-            modelContato.setDados(daoContato.preencheTabela(sql));
-        }
     }
 
-    public void setComponentes() {
+    private void excluirContato() throws NumberFormatException {
+        modContato.setId(Integer.parseInt(jtCodigo.getText()));
+        daoContato.excluir(modContato);
+        pesquisaPreencheTabela("SELECT * FROM CONTATO ORDER BY NOME");
         limparCampos(jpComponentes);
-        temDadosnaTela = true;
-        try {
-            conexao.conexaoDB();
-            conexao.executaSql("select * from contato where id ='" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 0) + "'");
-            
-            //Campos de Texto
-            jtEndereco.setText(conexao.rs.getString("endereco"));
-            jtBairro.setText(conexao.rs.getString("bairro"));
-            jtComplemento.setText(conexao.rs.getString("complemento"));
-            jtCep.setText(conexao.rs.getString("cep"));
-            jtCidade.setText(conexao.rs.getString("cidade"));
-            jtObs.setText(conexao.rs.getString("obs"));
-            jtEmpresa.setText(conexao.rs.getString("empresa"));
-            jtEmail.setText(conexao.rs.getString("email"));
-
-            //Campos de Datas
-            meuCampoDataCadastro.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataCadastro")));
-            meuCampoDataAlteracao.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataAlteracao")));
-            jtDataUltimaVisita.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataUltimaVisita")));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Conexao.desconecta();
-
-        jlTabela.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 1));
-        jtCodigo.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 0));
-        jtNome.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 1));
-        jtTelResidencial.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 2));
-        jtTelComercial.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 3));
-        jtTelCelular.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 4));
-    }
-    
-    private void jTableContatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContatoMouseClicked
-        setComponentes();
+        temDadosnaTela = false;
         habilitaBotoes();
-    }//GEN-LAST:event_jTableContatoMouseClicked
-
-    private void jTableContatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableContatoKeyReleased
-        setComponentes();
-        habilitaBotoes();
-    }//GEN-LAST:event_jTableContatoKeyReleased
-
-    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir ?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION, 0);
-        if (opcao == JOptionPane.YES_OPTION) {
-            modContato.setId(Integer.parseInt(jtCodigo.getText()));
-            daoContato.excluir(modContato);
-            pesquisaPreencheTabela("SELECT * FROM CONTATO ORDER BY NOME");
-            limparCampos(jpComponentes);
-            temDadosnaTela = false;
-            habilitaBotoes();
-        }
-    }//GEN-LAST:event_jbExcluirActionPerformed
-
-    private void jtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jbPesquisar.doClick();
-        }
-    }//GEN-LAST:event_jtPesquisaKeyPressed
-
-    private void jtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyReleased
-    }//GEN-LAST:event_jtPesquisaKeyReleased
-
-    private void jtRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRelatorioActionPerformed
-//        Relatorios rel = new Relatorios();
-//        try {
-//            JasperViewer.viewReport(rel.gerarRelatorio(), false);
-//        } catch (Exception e) {
-//        }
-    }//GEN-LAST:event_jtRelatorioActionPerformed
-
-    private void jrButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrButonActionPerformed
-        if (jrButon.isSelected()) {
-            jtDataUltimaVisita.setDataDia(true);
-        } else if (!jrButon.isSelected()) {
-            jtDataUltimaVisita.limpar();
-        }
-    }//GEN-LAST:event_jrButonActionPerformed
-
-    private void jrButonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrButonMouseClicked
-    }//GEN-LAST:event_jrButonMouseClicked
-
-    private void jtDataUltimaVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataUltimaVisitaActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String data = sdf.format(new Date());
-        System.out.println("teste entrou");
-        if (jtDataUltimaVisita.getValor() == data) {
-            System.out.println("entrou dentro");
-            jrButon.setSelected(true);
-        }
-    }//GEN-LAST:event_jtDataUltimaVisitaActionPerformed
-
-    private void jtDataUltimaVisitaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDataUltimaVisitaKeyReleased
-
-    }//GEN-LAST:event_jtDataUltimaVisitaKeyReleased
-
-    public void setGui(BeansContato modConsultaContato) {
-        jtCodigo.setText("" + modConsultaContato.getId());
-        jtNome.setText(modConsultaContato.getNome());
-        jtTelResidencial.setText(modConsultaContato.getTelefoneResidencial());
-        jtTelComercial.setText(modConsultaContato.getTelefoneComercial());
-        jtTelCelular.setText(modConsultaContato.getTelefoneCelular());
-        jtEmpresa.setText(modConsultaContato.getEmpresa());
-        jtEmail.setText(modConsultaContato.getEmail());
-        meuCampoDataCadastro.setText("" + modConsultaContato.getDataCadastro());
-        meuCampoDataAlteracao.setText("" + modConsultaContato.getDataAlteracao());
-        jtEndereco.setText(modConsultaContato.getEndereco());
-        jtBairro.setText(modConsultaContato.getBairro());
-        jtComplemento.setText(modConsultaContato.getComplemento());
-        jtCep.setText(modConsultaContato.getCep());
-        jtCidade.setText(modConsultaContato.getCidade());
-        jtObs.setText(modConsultaContato.getObs());
-        jtDataUltimaVisita.setText("" + modConsultaContato.getDataUltimaVisita());
-    }
-
-    public void setPersistencia(BeansContato modContato) {
-        //modContato.setId(Integer.parseInt(jtCodigo.getText()));
-        modContato.setNome("" + jtNome.getValor());
-        modContato.setTelefoneResidencial(jtTelResidencial.getText());
-        modContato.setTelefoneComercial(jtTelComercial.getText());
-        modContato.setTelefoneCelular(jtTelCelular.getText());
-        modContato.setEmpresa(jtEmpresa.getText());
-        modContato.setEmail(jtEmail.getText());
-        modContato.setDataCadastro((Date) meuCampoDataCadastro.getValor());
-        modContato.setDataAlteracao((Date) meuCampoDataAlteracao.getValor());
-        modContato.setEndereco(jtEndereco.getText());
-        modContato.setBairro(jtBairro.getText());
-        modContato.setComplemento(jtComplemento.getText());
-        modContato.setCep(jtCep.getText());
-        modContato.setCidade(jtCidade.getText());
-        modContato.setObs(jtObs.getText());
-        modContato.setDataUltimaVisita((Date) jtDataUltimaVisita.getValor());
     }
 
     public void habilitarCampos(Container container, boolean acao) {
@@ -816,6 +708,86 @@ public class TelaAgenda extends javax.swing.JFrame {
         }
     }
 
+    public void setGui(BeansContato modConsultaContato) {
+        jtCodigo.setText("" + modConsultaContato.getId());
+        jtNome.setText(modConsultaContato.getNome());
+        jtTelResidencial.setText(modConsultaContato.getTelefoneResidencial());
+        jtTelComercial.setText(modConsultaContato.getTelefoneComercial());
+        jtTelCelular.setText(modConsultaContato.getTelefoneCelular());
+        jtEmpresa.setText(modConsultaContato.getEmpresa());
+        jtEmail.setText(modConsultaContato.getEmail());
+        meuCampoDataCadastro.setText("" + modConsultaContato.getDataCadastro());
+        meuCampoDataAlteracao.setText("" + modConsultaContato.getDataAlteracao());
+        jtEndereco.setText(modConsultaContato.getEndereco());
+        jtBairro.setText(modConsultaContato.getBairro());
+        jtComplemento.setText(modConsultaContato.getComplemento());
+        jtCep.setText(modConsultaContato.getCep());
+        jtCidade.setText(modConsultaContato.getCidade());
+        jtObs.setText(modConsultaContato.getObs());
+        jtDataUltimaVisita.setText("" + modConsultaContato.getDataUltimaVisita());
+    }
+
+    public void setPersistencia(BeansContato modContato) {
+        modContato.setNome("" + jtNome.getValor());
+        modContato.setTelefoneResidencial(jtTelResidencial.getText());
+        modContato.setTelefoneComercial(jtTelComercial.getText());
+        modContato.setTelefoneCelular(jtTelCelular.getText());
+        modContato.setEmpresa(jtEmpresa.getText());
+        modContato.setEmail(jtEmail.getText());
+        modContato.setDataCadastro((Date) meuCampoDataCadastro.getValor());
+        modContato.setDataAlteracao((Date) meuCampoDataAlteracao.getValor());
+        modContato.setEndereco(jtEndereco.getText());
+        modContato.setBairro(jtBairro.getText());
+        modContato.setComplemento(jtComplemento.getText());
+        modContato.setCep(jtCep.getText());
+        modContato.setCidade(jtCidade.getText());
+        modContato.setObs(jtObs.getText());
+        modContato.setDataUltimaVisita((Date) jtDataUltimaVisita.getValor());
+    }
+
+    public void setComponentes() {
+        limparCampos(jpComponentes);
+        temDadosnaTela = true;
+        try {
+            Conexao.conexaoDB();
+            conexao.executaSql("select * from contato where id ='" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 0) + "'");
+
+            //Campos de Texto
+            jtEndereco.setText(conexao.rs.getString("endereco"));
+            jtBairro.setText(conexao.rs.getString("bairro"));
+            jtComplemento.setText(conexao.rs.getString("complemento"));
+            jtCep.setText(conexao.rs.getString("cep"));
+            jtCidade.setText(conexao.rs.getString("cidade"));
+            jtObs.setText(conexao.rs.getString("obs"));
+            jtEmpresa.setText(conexao.rs.getString("empresa"));
+            jtEmail.setText(conexao.rs.getString("email"));
+
+            //Campos de Datas
+            meuCampoDataCadastro.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataCadastro")));
+            meuCampoDataAlteracao.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataAlteracao")));
+            jtDataUltimaVisita.setValor(Conexao.dataDoBanco(conexao.rs.getDate("dataUltimaVisita")));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Conexao.desconecta();
+
+        jlTabela.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 1));
+        jtCodigo.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 0));
+        jtNome.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 1));
+        jtTelResidencial.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 2));
+        jtTelComercial.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 3));
+        jtTelCelular.setText("" + jTableContato.getValueAt(jTableContato.getSelectedRow(), 4));
+    }
+
+    public void pesquisaPreencheTabela(String sql) {
+        if (daoContato.preencheTabela(sql).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Contato não Encontrado!");
+        } else {
+            modelContato.setDados(daoContato.preencheTabela(sql));
+        }
+    }
+
     public void preparaTabela() {
         jTableContato.getColumnModel().getColumn(0).setPreferredWidth(35);
         jTableContato.getColumnModel().getColumn(0).setResizable(false);
@@ -842,9 +814,6 @@ public class TelaAgenda extends javax.swing.JFrame {
         jTableContato.setAutoResizeMode(jTableContato.AUTO_RESIZE_OFF);
         jTableContato.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jTableContato.setRowSorter(new TableRowSorter(modelContato));
-//        //jTableContato.setRowSelectionAllowed(true);
-//        //jTableContato.setColumnSelectionAllowed(false);
-
     }
 
     /**

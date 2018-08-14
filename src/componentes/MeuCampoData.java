@@ -1,12 +1,12 @@
 package componentes;
 
 import java.awt.event.FocusEvent;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
-import org.w3c.dom.events.DocumentEvent;
 
 public class MeuCampoData extends MeuCampoFormatado {
 
@@ -20,8 +20,8 @@ public class MeuCampoData extends MeuCampoFormatado {
         try {
             MaskFormatter mf = new MaskFormatter("##/##/####");
             mf.install(this);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoData");
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoData \n" + e);
         }
     }
 
@@ -33,8 +33,8 @@ public class MeuCampoData extends MeuCampoFormatado {
         try {
             MaskFormatter mf = new MaskFormatter("##/##/####");
             mf.install(this);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoData");
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoData \n" + e);
         }
     }
 
@@ -82,7 +82,7 @@ public class MeuCampoData extends MeuCampoFormatado {
             }
             sdf.parse(getText());
             return true;
-        } catch (Exception e) {
+        } catch (ParseException e) {
             return false;
         }
     }
@@ -108,29 +108,9 @@ public class MeuCampoData extends MeuCampoFormatado {
                 return sdf.parse(getText());
             }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível obter a data.");
-            e.printStackTrace();
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível obter a data \n"+ e);
             return null;
         }
-    }
-
-    public void teste() {
-        new DocumentListener() {
-            @Override
-            public void insertUpdate(javax.swing.event.DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void removeUpdate(javax.swing.event.DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void changedUpdate(javax.swing.event.DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
     }
 }

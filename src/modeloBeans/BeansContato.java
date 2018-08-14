@@ -20,10 +20,8 @@ public class BeansContato {
     private String cidade;
     private String obs;
     private Date dataUltimaVisita;
-
     String pesquisa;
 
-    //, String email, Date dataCadastro, Date dataAlteracao, String pesquisa
     public BeansContato(int id, String nome, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String empresa, String email, Date dataCadastro, Date dataAlteracao) {
         this.id = id;
         this.nome = nome;

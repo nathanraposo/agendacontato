@@ -19,8 +19,8 @@ public class Conexao {
     public static void conexaoDB() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\AgendaContato\\banco\\\\agendadb.sqlite");
-           //linux conn = DriverManager.getConnection("jdbc:sqlite:/home/nathan/Downloads/AgendaContato/banco/agendadb.sqlite");
+            //conn = DriverManager.getConnection("jdbc:sqlite:C:\\AgendaContato\\banco\\\\agendadb.sqlite");
+            conn = DriverManager.getConnection("jdbc:sqlite://home/nathan/NetBeansProjects/agendacontato/banco/agendadb.sqlite");
 
             //JOptionPane.showMessageDialog(null, "Banco Conectado Com sucesso! ");
         } catch (Exception e) {

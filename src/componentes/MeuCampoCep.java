@@ -1,5 +1,6 @@
 package componentes;
 
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
@@ -10,20 +11,21 @@ public class MeuCampoCep extends MeuCampoFormatado {
         try {
             MaskFormatter mf = new MaskFormatter("#####-###");
             mf.install(this);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoCEP");
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoCEP \n" + e);
         }
     }
-    
-    public MeuCampoCep(){
-        super(8,"",false,true);
+
+    public MeuCampoCep() {
+        super(8, "", false, true);
         try {
             MaskFormatter mf = new MaskFormatter("#####-###");
             mf.install(this);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoCEP");
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível iniciar MeuCampoCEP \n" + e);
         }
     }
+
     @Override
     public boolean eVazio() {
         return getText().replace("-", "").trim().isEmpty();

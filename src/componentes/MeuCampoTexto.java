@@ -23,13 +23,7 @@ public class MeuCampoTexto extends MeuCampoJTextField{
     public boolean eValido(){
         return getText().trim().length() >= minimoCaracteres;
     }
-//    @Override
-//    public void caretUpdate(CaretEvent e) {
-//        if (getCaret().getMark() != getText().length()) {
-//            getCaret().setDot(getText().length());
-//        }
-//    }
-
+    
     @Override
     public Object getValor() {
        return getText();

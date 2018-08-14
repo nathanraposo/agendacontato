@@ -49,7 +49,8 @@ public class tableModelContato extends AbstractTableModel {
         this.dados = dados;
         fireTableDataChanged();
     }
-    public List<BeansContato> getDados(){
+
+    public List<BeansContato> getDados() {
         return dados;
     }
 
@@ -72,16 +73,12 @@ public class tableModelContato extends AbstractTableModel {
         switch (coluna) {
             case 0:
                 return dados.get(linha).getId();
-
             case 1:
                 return dados.get(linha).getNome();
-
             case 2:
                 return dados.get(linha).getTelefoneResidencial();
-
             case 3:
                 return dados.get(linha).getTelefoneComercial();
-
             case 4:
                 return dados.get(linha).getTelefoneCelular();
             case 5:

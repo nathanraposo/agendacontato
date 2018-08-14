@@ -22,8 +22,6 @@ public class MeuCampoFormatado extends JFormattedTextField implements MeuCompone
         addFocusListener(this);
     }
 
-    
-
     @Override
     public String getDica() {
         return dica;
